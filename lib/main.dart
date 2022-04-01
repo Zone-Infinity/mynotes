@@ -17,6 +17,7 @@ void main() {
     routes: {
       '/login/': (context) => const LoginView(),
       '/register/': (context) => const RegisterView(),
+      '/notes/': (context) => const NotesView(),
     },
   ));
 }
@@ -83,7 +84,10 @@ class _NotesViewState extends State<NotesView> {
               return const [
                 PopupMenuItem<MenuAction>(
                   value: MenuAction.logout,
-                  child: Text('Log out'),
+                  child: Text(
+                    'Log out',
+                    style: TextStyle(color: Colors.red),
+                  ),
                 )
               ];
             },
@@ -112,7 +116,10 @@ Future<bool> showLogOutDialog(BuildContext context) async {
               onPressed: () {
                 Navigator.of(context).pop(true);
               },
-              child: const Text('Log out')),
+              child: const Text(
+                'Log out',
+                style: TextStyle(color: Colors.red),
+              )),
         ],
       );
     },
