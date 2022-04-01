@@ -12,7 +12,7 @@ void main() {
   runApp(MaterialApp(
     title: 'My Notes',
     theme: ThemeData(
-      primarySwatch: Colors.blueGrey,
+      primarySwatch: Colors.blue,
     ),
     home: const HomePage(),
     routes: {
@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.done:
-            final user = FirebaseAuth.instance.currentUser;
+            final user = FirebaseAuth.instance.currentUser?..reload();
             if (user != null) {
               if (user.emailVerified) {
                 return const NotesView();
